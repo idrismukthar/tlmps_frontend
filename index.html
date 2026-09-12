@@ -97,7 +97,7 @@
     <img src="tlmps_llogo.png" alt="TLMPS Logo">
     <span>The Leaders Memorial Private School</span>
 </a>
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
             <ul class="nav-links">
                 <li class="mobile-menu-header">
                     <span class="mobile-logo-text">TLMPS.</span>
@@ -259,7 +259,11 @@
 <script>
     // Simple script for mobile menu toggle
     function toggleMenu() {
-        document.querySelector(".nav-links").classList.toggle("show");
+        const menu = document.querySelector(".nav-links");
+        const button = document.querySelector(".hamburger");
+        const isOpen = menu.classList.toggle("show");
+        button.setAttribute("aria-expanded", isOpen);
+        button.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
     }
 </script>
 
