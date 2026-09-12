@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stories, news, and learning moments from The Leaders Memorial Private School.">
+    <meta name="keywords" content="TLMPS blog, The Leaders Memorial Private School news, school news Lagos, TLMPS activities">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://tlmps.netlify.app/blog.html">
+    <title>Stories & News | The Leaders Memorial Private School</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tlmps.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tlmps.netlify.app/blog.html" }
+      ]
+    }
+    </script>
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #3a0857;
+            --ink-deep: #28033d;
+            --accent: #c4d70b;
+            --paper: #faf9f5;
+            --muted: #655e70;
+            --line: rgba(58, 8, 87, .13);
+            --shadow: 0 18px 45px rgba(58, 8, 87, .11);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+        .site-header { background: rgba(58, 8, 87, .98); color: #fff; position: sticky; top: 0; z-index: 10; }
+        .nav { align-items: center; display: flex; justify-content: space-between; margin: auto; max-width: 1240px; padding: 14px 24px; }
+        .logo { align-items: center; display: flex; gap: 10px; }
+        .logo img { height: 42px; object-fit: contain; width: 42px; }
+        .logo span { font-family: Fraunces, serif; font-size: 1.2rem; font-weight: 700; }
+        .nav-links { align-items: center; display: flex; gap: 21px; }
+        .nav-links a { color: rgba(255,255,255,.82); font-size: .86rem; font-weight: 600; }
+        .nav-links a:hover, .nav-links .active { color: #fff; }
+        .nav-links .active { border-bottom: 2px solid var(--accent); padding-bottom: 5px; }
+        .enroll { background: var(--accent); border-radius: 999px; color: var(--ink) !important; padding: 10px 16px; }
+        .menu-button { background: none; border: 0; color: #fff; cursor: pointer; display: none; font-size: 1.7rem; }
+        .hero { background: linear-gradient(90deg, rgba(40,3,61,.94), rgba(58,8,87,.48)), url("img/hero1 (2).jpg") center/cover; color: #fff; min-height: 390px; padding: 105px 24px 80px; }
+        .hero-inner, .page-width { margin: auto; max-width: 1120px; }
+        .eyebrow { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+        .hero h1 { font-family: Fraunces, serif; font-size: clamp(3rem, 7vw, 5.8rem); line-height: 1.02; margin: 14px 0 18px; max-width: 720px; }
+        .hero p { color: rgba(255,255,255,.8); font-size: 1.08rem; max-width: 560px; }
+        .content { display: grid; gap: 70px; grid-template-columns: minmax(0, 1fr) 300px; padding: 78px 24px 95px; }
+        .section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 26px; }
+        h2, h3 { font-family: Fraunces, serif; line-height: 1.15; }
+        h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+        .section-heading a { color: var(--ink); font-size: .88rem; font-weight: 700; }
+        .section-heading a:hover { color: #8965a8; }
+        .featured { background: #fff; border-radius: 20px; box-shadow: var(--shadow); display: grid; grid-template-columns: 1.05fr 1fr; overflow: hidden; }
+        .featured img { height: 100%; min-height: 330px; object-fit: cover; width: 100%; }
+        .featured-copy { padding: 38px 34px; }
+        .tag { color: #80649a; font-size: .72rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+        .featured h3 { font-size: 2rem; margin: 13px 0 14px; }
+        .featured p, .post p, .sidebar p { color: var(--muted); }
+        .meta { color: #877e90; font-size: .79rem; margin-top: 19px; }
+        .read-more { align-items: center; color: var(--ink); display: inline-flex; font-size: .88rem; font-weight: 700; gap: 8px; margin-top: 24px; }
+        .read-more:hover { color: #8965a8; }
+        .posts { display: grid; gap: 22px; grid-template-columns: repeat(2, 1fr); margin-top: 24px; }
+        .post { background: #fff; border: 1px solid var(--line); border-radius: 15px; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+        .post:hover { box-shadow: var(--shadow); transform: translateY(-5px); }
+        .post img { display: block; height: 190px; object-fit: cover; width: 100%; }
+        .post-copy { padding: 23px; }
+        .post h3 { font-size: 1.35rem; margin: 9px 0 9px; }
+        .post p { font-size: .9rem; }
+        .sidebar-card { background: #fff; border: 1px solid var(--line); border-radius: 15px; margin-bottom: 22px; padding: 27px 24px; }
+        .sidebar-card h3 { font-size: 1.45rem; margin-bottom: 10px; }
+        .sidebar-card p { font-size: .9rem; }
+        .categories { margin-top: 20px; }
+        .categories a { border-bottom: 1px solid var(--line); display: flex; font-size: .9rem; justify-content: space-between; padding: 11px 0; }
+        .categories a:hover { color: #8965a8; }
+        .categories span { color: #9a91a2; }
+        .newsletter { background: var(--ink); color: #fff; }
+        .newsletter p { color: rgba(255,255,255,.72); }
+        .newsletter form { margin-top: 18px; }
+        .newsletter input { border: 0; border-radius: 8px; font: inherit; margin-bottom: 10px; padding: 12px; width: 100%; }
+        .newsletter button { background: var(--accent); border: 0; border-radius: 8px; color: var(--ink); cursor: pointer; font: inherit; font-weight: 700; padding: 12px; width: 100%; }
+        .sr-only { height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; clip: rect(0, 0, 0, 0); }
+        .footer { background: var(--ink-deep); color: rgba(255,255,255,.7); font-size: .84rem; padding: 28px 20px; text-align: center; }
+        @media (max-width: 850px) {
+            .menu-button { display: block; }
+            .nav-links { align-items: stretch; background: var(--ink); display: none; flex-direction: column; gap: 0; left: 0; padding: 18px 24px 30px; position: absolute; right: 0; top: 70px; }
+            .nav-links.show { display: flex; }
+            .nav-links li { border-bottom: 1px solid rgba(255,255,255,.1); padding: 13px 0; }
+            .nav-links .enroll { display: block; margin-top: 8px; text-align: center; }
+            .content { grid-template-columns: 1fr; }
+            .sidebar { display: grid; gap: 22px; grid-template-columns: repeat(2, 1fr); }
+            .sidebar-card { margin: 0; }
+        }
+        @media (max-width: 580px) {
+            .logo span { font-size: 1rem; }
+            .hero { min-height: 340px; padding-top: 80px; }
+            .content { padding: 56px 18px 70px; }
+            .featured, .posts, .sidebar { grid-template-columns: 1fr; }
+            .featured img { min-height: 230px; }
+            .featured-copy { padding: 27px 23px; }
+            .featured h3 { font-size: 1.65rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="logo" href="index.html">
+                <img src="tlmps_llogo.png" alt="TLMPS logo">
+                <span>The Leaders Memorial Private School</span>
+            </a>
+            <button class="menu-button" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">&#9776;</button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a class="active" href="blog.html">Blog</a></li>
+                <li><a href="pictures.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a class="enroll" href="admission.html">Enroll Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="eyebrow">The TLMPS Journal</div>
+                <h1>Ideas, moments & stories from our school community.</h1>
+                <p>Discover the people, projects, and everyday wins that make learning at TLMPS special.</p>
+            </div>
+        </section>
+
+        <div class="content page-width">
+            <section aria-labelledby="featured-heading">
+                <div class="section-heading">
+                    <h2 id="featured-heading">Featured story</h2>
+                    <a href="#latest">View latest <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <article class="featured">
+                    <img src="img/hero1 (1).jpg" alt="TLMPS students learning together">
+                    <div class="featured-copy">
+                        <div class="tag">School life · Featured</div>
+                        <h3>Growing curious minds, one experience at a time</h3>
+                        <p>From hands-on projects to the friendships made between lessons, school is full of moments that shape confident, thoughtful leaders.</p>
+                        <div class="meta">May 24, 2025 &nbsp; · &nbsp; 5 min read</div>
+                        <a class="read-more" href="#article">Read the story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <div class="section-heading" id="latest" style="margin-top: 72px;">
+                    <h2>Latest from TLMPS</h2>
+                </div>
+                <div class="posts">
+                    <article class="post">
+                        <img src="img/carousel (10).jpg" alt="Students during morning assembly">
+                        <div class="post-copy">
+                            <div class="tag">Community</div>
+                            <h3>Why morning assembly matters</h3>
+                            <p>Starting the day together helps our learners build confidence, focus, and a strong sense of belonging.</p>
+                            <div class="meta">May 18, 2025 · 3 min read</div>
+                        </div>
+                    </article>
+                    <article class="post">
+                        <img src="img/carousel (19).jpg" alt="Students taking part in a science practical">
+                        <div class="post-copy">
+                            <div class="tag">Learning</div>
+                            <h3>Learning beyond the textbook</h3>
+                            <p>Our practical lessons turn questions into discoveries and make room for every learner to take part.</p>
+                            <div class="meta">May 11, 2025 · 4 min read</div>
+                        </div>
+                    </article>
+                    <article class="post">
+                        <img src="img/carousel (5).jpg" alt="Students at an inter-house sports event">
+                        <div class="post-copy">
+                            <div class="tag">Activities</div>
+                            <h3>The lessons we learn on the field</h3>
+                            <p>Sports teach discipline, teamwork, resilience, and the joy of celebrating one another.</p>
+                            <div class="meta">May 02, 2025 · 3 min read</div>
+                        </div>
+                    </article>
+                    <article class="post">
+                        <img src="img/carousel (14).jpg" alt="Students enjoying a creative arts class">
+                        <div class="post-copy">
+                            <div class="tag">Creativity</div>
+                            <h3>Making space for imagination</h3>
+                            <p>Creative work gives our students the freedom to express ideas, try again, and find their voice.</p>
+                            <div class="meta">April 25, 2025 · 4 min read</div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <aside class="sidebar" aria-label="Blog sidebar">
+                <div class="sidebar-card">
+                    <h3>Explore topics</h3>
+                    <p>Browse stories by the things our community cares about most.</p>
+                    <div class="categories">
+                        <a href="#latest">School life <span>12</span></a>
+                        <a href="#latest">Learning <span>08</span></a>
+                        <a href="#latest">Community <span>06</span></a>
+                        <a href="#latest">Activities <span>05</span></a>
+                    </div>
+                </div>
+                <div class="sidebar-card newsletter">
+                    <h3>Stay in the loop</h3>
+                    <p>Get the latest school news and helpful family updates in your inbox.</p>
+                    <form onsubmit="return subscribe(event)">
+                        <label class="sr-only" for="email">Email address</label>
+                        <input id="email" type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="current-year"></span> The Leaders Memorial Private School. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("nav-links");
+            const button = document.querySelector(".menu-button");
+            const isOpen = menu.classList.toggle("show");
+            button.setAttribute("aria-expanded", isOpen);
+        }
+
+        function subscribe(event) {
+            event.preventDefault();
+            const button = event.target.querySelector("button");
+            button.textContent = "You are subscribed!";
+            button.disabled = true;
+            return false;
+        }
+
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
