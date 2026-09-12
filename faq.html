@@ -125,9 +125,9 @@
         <nav class="header-nav">
             <a href="index.html#home" class="logo">
                 <img src="tlmps_llogo.png" alt="TLMPS Logo">
-                <span>TLMPS.</span>
+                <span>The Leaders Memorial Private School</span>
             </a>
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleMenu()"><span aria-hidden="true">☰</span></button>
             <ul class="nav-links">
                 <li class="mobile-menu-header">
                     <span class="mobile-logo-text">TLMPS.</span>
@@ -236,7 +236,12 @@
     <script src="main.js"></script>
     <script>
         function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("show");
+            const menu = document.querySelector(".nav-links");
+            const button = document.querySelector(".hamburger");
+            const isOpen = menu.classList.toggle("show");
+            button.querySelector("span").textContent = isOpen ? "×" : "☰";
+            button.setAttribute("aria-expanded", isOpen);
+            button.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
         }
 
         // 💡 JAVASCRIPT FOR ACCORDION DROPDOWN 💡

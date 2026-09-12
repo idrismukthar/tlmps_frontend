@@ -116,15 +116,15 @@
                 <img src="tlmps_llogo.png" alt="TLMPS logo">
                 <span>The Leaders Memorial Private School</span>
             </a>
-            <button class="menu-button" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">&#9776;</button>
+            <button class="menu-button" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleMenu()"><span aria-hidden="true">&#9776;</span></button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a class="active" href="blog.html">Blog</a></li>
-                <li><a href="pictures.html">Gallery</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a class="enroll" href="admission.html">Enroll Now</a></li>
+                <li><a class="enroll" href="https://tlmps-portal.onrender.com/">Check Results</a></li>
             </ul>
         </nav>
     </header>
@@ -230,7 +230,9 @@
             const menu = document.getElementById("nav-links");
             const button = document.querySelector(".menu-button");
             const isOpen = menu.classList.toggle("show");
+            button.querySelector("span").textContent = isOpen ? "×" : "☰";
             button.setAttribute("aria-expanded", isOpen);
+            button.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
         }
 
         function subscribe(event) {

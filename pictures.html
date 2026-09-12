@@ -38,7 +38,7 @@
 <header class="main-header">
     <div class="nav-container">
         <a href="index.html" class="logo-box">
-            <span class="logo-text">TLMPS</span>
+            <span class="logo-text">The Leaders Memorial Private School</span>
         </a>
 
         <nav class="navbar">
@@ -49,7 +49,7 @@
                 </li>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a class="active" href="pictures.html">Gallery</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="admission.html" class="cta-button">Enroll Now</a></li>
@@ -57,9 +57,7 @@
             </ul>
         </nav>
 
-        <div class="hamburger" onclick="toggleMenu()">
-            ☰
-        </div>
+        <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleMenu()"><span aria-hidden="true">☰</span></button>
     </div>
 </header>
 
@@ -113,7 +111,12 @@
 
 <script>
 function toggleMenu() {
-    document.querySelector(".nav-links").classList.toggle("show");
+    const menu = document.querySelector(".nav-links");
+    const button = document.querySelector(".hamburger");
+    const isOpen = menu.classList.toggle("show");
+    button.querySelector("span").textContent = isOpen ? "×" : "☰";
+    button.setAttribute("aria-expanded", isOpen);
+    button.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
 }
 </script>
 

@@ -39,7 +39,7 @@
     <div class="nav-container">
         <a href="index.html" class="logo-box">
             <img src="tlmps_llogo.png" alt="School Logo">
-            <span class="logo-text">TLMPS</span>
+            <span class="logo-text">The Leaders Memorial Private School</span>
         </a>
 
         <nav class="navbar">
@@ -58,9 +58,7 @@
             </ul>
         </nav>
 
-        <div class="hamburger" onclick="toggleMenu()">
-            ☰
-        </div>
+        <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleMenu()"><span aria-hidden="true">☰</span></button>
     </div>
 </header>
 
@@ -150,7 +148,12 @@
 <!-- Mobile Menu Script -->
 <script>
 function toggleMenu() {
-    document.querySelector(".nav-links").classList.toggle("show");
+    const menu = document.querySelector(".nav-links");
+    const button = document.querySelector(".hamburger");
+    const isOpen = menu.classList.toggle("show");
+    button.querySelector("span").textContent = isOpen ? "×" : "☰";
+    button.setAttribute("aria-expanded", isOpen);
+    button.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
 }
 </script>
 

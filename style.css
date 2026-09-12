@@ -48,7 +48,7 @@ ul { list-style: none; }
 }
 .logo { align-items: center; display: flex; flex-shrink: 0; gap: 10px; }
 .logo img { height: 42px; width: 42px; object-fit: contain; }
-.logo span { color: var(--white); font-family: 'Fraunces', serif; font-size: 1.28rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+.logo span { color: var(--white); font-family: 'Fraunces', serif; font-size: 1.28rem; font-weight: 700; letter-spacing: .02em; }
 .nav-links { align-items: center; display: flex; flex-shrink: 0; gap: 18px; }
 .nav-links li a { color: rgba(255,253,248,.8); font-size: .84rem; font-weight: 600; transition: var(--transition); white-space: nowrap; }
 .nav-links li a:hover, .nav-links li a.active { color: var(--white); }
@@ -160,7 +160,7 @@ ul { list-style: none; }
 @media (max-width: 700px) {
     .header-nav { padding: 12px 18px; }
     .logo { flex-shrink: 1; min-width: 0; }
-    .logo span { font-size: .95rem; max-width: calc(100vw - 112px); overflow: hidden; text-overflow: ellipsis; }
+    .logo span { font-size: .95rem; line-height: 1.25; max-width: calc(100vw - 112px); }
     .hero-section { height: 650px; min-height: 0; }
     .hero-content { padding: 90px 20px 20px; }
     .hero-title { font-size: clamp(2.75rem, 14vw, 4.5rem); }
