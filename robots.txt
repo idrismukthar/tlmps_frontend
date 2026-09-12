@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /nil/
+Disallow: /bece/
+
+Sitemap: https://tlmps.netlify.app/sitemap.xml

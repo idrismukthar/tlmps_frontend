@@ -1,0 +1,395 @@
+/* --------------------------------- */
+/*       THEME COLOR VARIABLES       */
+/* --------------------------------- */
+:root {
+    --primary-purple: #4b0082; /* Deep Purple */
+    --secondary-lilac: #b39ddb; /* Border/Accent Purple */
+    --accent-color: #6a1b9a; /* Button/Highlight Purple */
+    --success-green: #00801f;
+    --fail-red: #d32f2f;
+    --bg-light: #f9f9fa; /* Very light background for contrast */
+    --table-header: #e6e0f8; /* Pale lavender header */
+    --font-standard: "Poppins", sans-serif;
+}
+
+/* ------------------------- */
+/*   GENERAL LAYOUT STYLING  */
+/* ------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-standard);
+    margin: 0;
+    background: #fafafa;
+    padding: 20px;
+    color: #222;
+}
+
+/* Main Container for PDF Wrapper */
+.result-page {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid var(--secondary-lilac);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-size: 14px;
+}
+
+.result-container {
+    padding: 15px 25px 25px 25px; /* Padding for the main content area */
+}
+
+/* ------------------------- */
+/*          HEADER           */
+/* ------------------------- */
+
+.main-header {
+    /* 🔥 FIX: Logo Left, Text Center, Photo Right using Flexbox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px 15px 25px;
+    border-bottom: 3px solid var(--primary-purple); /* Stronger separator */
+}
+
+.logo, .student-photo {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--secondary-lilac);
+}
+
+.logo {
+    border-radius: 50%;
+}
+
+.student-photo {
+    border-radius: 6px;
+}
+
+.header-center {
+    flex-grow: 1;
+    text-align: center;
+    color: var(--primary-purple);
+}
+
+.school-name {
+    margin: 5px 0 3px 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.address,
+.contacts,
+.website {
+    font-size: 11px;
+    margin: 2px 0;
+    line-height: 1.3;
+}
+
+.term-title {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-color);
+    border-top: 1px solid var(--secondary-lilac);
+    padding-top: 5px;
+}
+
+/* ------------------------- */
+/*     DETAILS & PERFORMANCE  */
+/* ------------------------- */
+.card {
+    background: var(--bg-light); 
+    border: 1px solid var(--secondary-lilac);
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    page-break-inside: avoid;
+}
+
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-purple);
+    border-bottom: 1px solid var(--secondary-lilac);
+    padding-bottom: 4px;
+    text-align: left;
+}
+
+/* Two-column layout handler */
+.two-col {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Allows stacking on small screens/print */
+}
+
+.student-admin-wrapper > div {
+    flex: 1;
+    min-width: 45%;
+}
+
+/* Performance Section Layout */
+.performance-wrapper {
+    align-items: flex-start; /* Aligns academic table and summary blocks to the top */
+}
+
+.academic-results {
+    flex: 2; /* Main table takes 2/3 width */
+}
+
+.summary-details {
+    flex: 1; /* Summary blocks take 1/3 width */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ------------------------- */
+/*           TABLES          */
+/* ------------------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    page-break-inside: avoid;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 5px 8px;
+    text-align: left;
+}
+
+table th {
+    background: var(--table-header);
+    color: var(--primary-purple);
+    font-weight: 600;
+    text-align: center;
+    font-size: 10px;
+}
+
+/* Data Tables (Student Info, Summary) */
+.data-table td {
+    font-size: 11px;
+    border: none;
+    padding: 3px 0;
+}
+.data-table tr:first-child td {
+    padding-top: 0;
+}
+.data-table tr:last-child td {
+    padding-bottom: 0;
+}
+
+.data-table td:first-child {
+    font-weight: 500;
+    width: 45%;
+}
+
+/* Academic Results Table */
+#resultsTable th {
+    font-size: 9px;
+    padding: 3px;
+}
+
+#resultsTable td {
+    font-size: 10px;
+    text-align: center;
+}
+
+#resultsTable td:first-child {
+    text-align: left;
+    font-weight: 400;
+}
+
+/* Character Grid (Rating cells should be empty by default) */
+.character-grid td {
+    font-size: 10px;
+    text-align: center;
+    padding: 2px;
+}
+.character-grid th {
+    font-size: 9px;
+}
+.character-grid td:first-child {
+    font-weight: 500;
+    text-align: left;
+    background-color: #f0f0ff;
+}
+
+
+/* ------------------------- */
+/*        COMMENTS & SIGS    */
+/* ------------------------- */
+
+.comments-signatures-wrapper {
+    margin-bottom: 20px;
+    /* Fix 1: Push the two comment sections apart */
+    justify-content: space-between; 
+}
+
+.comment-box {
+    border: 1px dashed var(--secondary-lilac);
+    /* Fix 2: Make the box taller */
+    min-height: 100px; 
+    margin: 10px 0 20px 0;
+    padding: 8px;
+    /* Fix 3: Add rounded corners */
+    border-radius: 8px; 
+    font-family: "Georgia", serif; /* Default font for the box */
+    font-size: 11px;
+}
+
+/* 🔥 NEW RULE: Style the Principal's actual comment text */
+#principalComment {
+    font-family: 'Dancing Script', cursive; /* The curly font */
+    font-size: 16px; /* Larger to look like handwriting */
+    font-weight: 700; /* Bolder look */
+    line-height: 1.3;
+    color: var(--primary-purple); /* Make it purple to stand out */
+    margin: 0;
+    padding: 0;
+}
+
+.comments-signatures-wrapper > div {
+    flex: 1; 
+    min-width: 45%;
+}
+
+.sign {
+    text-align: center;
+    margin: 5px 0 0 0;
+    font-size: 11px;
+}
+
+.sign hr {
+    margin: 5px auto;
+    width: 70%;
+    border: 0;
+    border-top: 1px solid #333;
+}
+
+/* Print adjustment for the cursive font */
+@media print {
+    #principalComment {
+        font-size: 13px !important; /* Smaller print size */
+    }
+}
+
+/* ------------------------- */
+/*     FOOTER AND BUTTONS    */
+/* ------------------------- */
+.footer-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.print-info {
+    font-size: 10px;
+    color: #666;
+}
+#printedOn {
+    font-weight: bold;
+    color: #444;
+}
+
+.buttons-container {
+    text-align: right;
+}
+
+.download-btn {
+    padding: 8px 15px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.logout-btn {
+    margin-left: 10px;
+    padding: 8px 15px;
+    background: var(--fail-red);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ================================================= */
+/*                 A4 PRINT STYLING                  */
+/* ================================================= */
+
+@page {
+    size: A4;
+    margin: 10mm 15mm;
+}
+
+@media print {
+    /* Base reset */
+    body {
+        padding: 0;
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .result-page {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .result-container {
+        padding: 10px 15mm 10px 15mm; /* Apply margin from @page */
+    }
+
+    /* CRITICAL: Page break prevention */
+    .main-header,
+    .student-admin-wrapper,
+    .performance-wrapper,
+    .comments-signatures-wrapper,
+    .card,
+    .two-col,
+    table {
+        page-break-inside: avoid !important;
+    }
+
+    /* Print specific font sizing to fit A4 */
+    .school-name { font-size: 15px; }
+    .term-title { font-size: 13px; }
+    .address, .contacts, .website { font-size: 9px; }
+    
+    .data-table td, .data-table td:first-child { font-size: 9px; }
+    #resultsTable td, #resultsTable th { font-size: 8px; padding: 2px; }
+    .character-grid td, .character-grid th { font-size: 8px; padding: 2px; }
+    .comment-box { min-height: 50px; font-size: 9px; padding: 5px; }
+    .sign { font-size: 9px; }
+    .print-info { font-size: 8px; }
+
+    /* Hide digital controls */
+    .footer-controls .buttons-container,
+    .download-btn,
+    .logout-btn {
+        display: none !important;
+    }
+}

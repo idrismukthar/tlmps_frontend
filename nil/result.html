@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TLMPS Result - First Term 2025/2026</title>
+
+    <link rel="stylesheet" href="result.css">
+    <link rel="icon" href="img/favicon/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="result-page" id="result-page">
+        
+        <header class="main-header">
+            <div class="header-center">
+                <img src="/bece/tlmps_logo.png" class="logo" alt="School Logo">
+                <h1 class="school-name">THE LEADERS MEMORIAL PRIVATE SCHOOL</h1>
+                <p class="address">17, Shoye Odubana Street, Maciland Busstop, Off Lafunke Road, Ijegun Lagos</p>
+                <p class="contacts">theleadersmemorialprivatesch@gmail.com | contacttlmps@gmail.com</p>
+                <p class="website"><a href="https://tlmps.netlify.app" target="_blank">tlmps.netlify.app</a></p>
+                <h2 class="term-title">First Term Report Card – 2025/2026 Session</h2>
+            </div>
+
+            <div class="header-right">
+                <img id="studentPhoto" class="student-photo" alt="Student Passport">
+            </div>
+        </header>
+
+        <main class="result-container">
+
+            <section class="two-col student-admin-wrapper">
+
+                <div class="student-details card">
+                    <h3>Personal Details</h3>
+                    <table class="data-table">
+                        <tr><td>Name:</td><td id="studentName"></td></tr>
+                        <tr><td>Sex:</td><td id="studentSex"></td></tr>
+                        <tr><td>Class:</td><td id="studentClass"></td></tr>
+                        <tr><td>Admission No:</td><td id="studentID"></td></tr>
+                    </table>
+                </div>
+
+                <div class="attendance card">
+                    <h3>Attendance </h3>
+                    <table class="data-table">
+                        <tr><td>Next Term Begins:</td><td id="nextTermBegins">12th Jan, 2026</td></tr>
+                        <tr><td>School Opened For:</td><td id="daysOpened">65 Days</td></tr>
+                        <tr><td>Present:</td><td id="daysPresent">____</td></tr>
+                        <tr><td>Absent:</td><td id="daysAbsent">____</td></tr>
+                        <tr><td>Class Position:</td><td id="studentPosition">____</td></tr>
+                    </table>
+                </div>
+
+            </section>
+
+            <section class="performance-wrapper two-col">
+                <div class="academic-results">
+                    <div class="results-section card">
+                        <h3>Academic Performance</h3>
+    
+                        <table id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th>Subjects Offered</th>
+                                    <th>CA (40)</th>
+                                    <th>Exam (60)</th>
+                                    <th>Total (100)</th>
+                                    <th>Remark</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsBody">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="summary-details">
+                    <div class="weighted card">
+                        <h3>Scores Summary</h3>
+                        <table class="data-table">
+                            <tr><td>Overall Average:</td><td id="avgDisplay">0%</td></tr>
+                            <tr><td>Grand Total:</td><td id="totalDisplay">0</td></tr>
+                        </table>
+                    </div>
+                    
+                    <div class="character card">
+                        <h3>Character & Conduct</h3>
+                        <table class="character-grid">
+                            <thead>
+                                <tr>
+                                    <th>Trait</th>
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </tr>
+                            </thead>
+    
+                            <tbody>
+                                <tr><td>Punctuality</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                <tr><td>Neatness</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                <tr><td>Obedience</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                <tr><td>Honesty</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                <tr><td>Respect</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                <tr><td>Discipline</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="two-col comments-signatures-wrapper">
+                <div class="teacher card">
+                    <h3>Class Teacher's Comment</h3>
+                    <div class="comment-box" id="teacherCommentBox"></div> 
+                    <p class="sign">_________________________<br>Class Teacher's Signature</p>
+                </div>
+
+                <div class="principal card">
+                    <h3>Principal's Comment</h3>
+                    <div class="comment-box" id="principalCommentBox">
+                        <p id="principalComment"></p> 
+                    </div>
+                    <p class="sign">_________________________<br>Principal's Signature</p>
+                </div>
+            </section>
+            
+            <section class="footer-controls">
+                <div class="print-info">
+                    <p>Printed On: <span id="printedOn">Loading...</span></p> 
+                </div>
+
+                <div class="buttons-container">
+                    <button id="downloadBtn" class="download-btn">📥 Download PDF</button>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </section>
+
+        </main>
+        
+    </div>
+
+    <script src="result_script.js"></script>
+</body>
+</html>
