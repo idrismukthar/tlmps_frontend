@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin | TLMPS</title>
+    <link rel="icon" href="img/favicon/favicon.ico">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <main class="admin-shell">
+        <section id="login-panel" class="panel narrow">
+            <p class="eyebrow">TLMPS Blog</p>
+            <h1>Admin login</h1>
+            <p class="muted">Sign in to publish school news and stories.</p>
+            <form id="login-form">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" required autocomplete="email">
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" required autocomplete="current-password">
+                <button type="submit">Sign in</button>
+            </form>
+            <p id="login-message" class="message" role="alert"></p>
+        </section>
+
+        <section id="dashboard-panel" class="panel dashboard" hidden>
+            <header class="dashboard-header">
+                <div>
+                    <p class="eyebrow">TLMPS Blog</p>
+                    <h1>Manage posts</h1>
+                </div>
+                <div class="header-actions">
+                    <a href="blog.html">View blog</a>
+                    <button id="logout-button" class="secondary" type="button">Log out</button>
+                </div>
+            </header>
+            <p id="dashboard-message" class="message" role="status"></p>
+            <form id="post-form" class="post-form">
+                <input id="post-id" type="hidden">
+                <div class="form-grid">
+                    <div>
+                        <label for="post-title">Title</label>
+                        <input id="post-title" required maxlength="180">
+                    </div>
+                    <div>
+                        <label for="post-category">Category</label>
+                        <select id="post-category">
+                            <option>School life</option>
+                            <option>Learning</option>
+                            <option>Community</option>
+                            <option>Activities</option>
+                            <option>Creativity</option>
+                        </select>
+                    </div>
+                </div>
+                <label for="post-excerpt">Short summary</label>
+                <textarea id="post-excerpt" maxlength="500" rows="3" required></textarea>
+                <label for="post-content">Article content</label>
+                <textarea id="post-content" rows="12" required></textarea>
+                <label for="post-image">Image URL <span class="muted">(optional for now)</span></label>
+                <input id="post-image" type="url" placeholder="https://...">
+                <div class="form-actions">
+                    <button type="submit" name="status" value="draft" class="secondary">Save draft</button>
+                    <button type="submit" name="status" value="published">Publish post</button>
+                    <button id="cancel-edit" type="button" class="link-button" hidden>Cancel edit</button>
+                </div>
+            </form>
+            <h2>Existing posts</h2>
+            <div id="posts-list" class="posts-list"></div>
+        </section>
+    </main>
+    <script src="js/supabase-config.js"></script>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

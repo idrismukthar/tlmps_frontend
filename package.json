@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "scripts": {
+    "generate-config": "node scripts/generate-supabase-config.js"
+  }
+}
