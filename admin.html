@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Blog Admin | TLMPS</title>
     <link rel="icon" href="img/favicon/favicon.ico">
     <link rel="stylesheet" href="admin.css">
@@ -18,6 +19,10 @@
                 <input id="login-email" type="email" required autocomplete="email">
                 <label for="login-password">Password</label>
                 <input id="login-password" type="password" required autocomplete="current-password">
+                <label class="remember-option">
+                    <input id="remember-me" type="checkbox" checked>
+                    <span>Remember me on this device</span>
+                </label>
                 <button type="submit">Sign in</button>
             </form>
             <p id="login-message" class="message" role="alert"></p>
@@ -31,42 +36,123 @@
                 </div>
                 <div class="header-actions">
                     <a href="blog.html">View blog</a>
+                    <button id="profile-button" class="secondary profile-button" type="button">
+                        <span class="profile-avatar" aria-hidden="true">A</span>
+                        My profile
+                    </button>
                     <button id="logout-button" class="secondary" type="button">Log out</button>
                 </div>
             </header>
             <p id="dashboard-message" class="message" role="status"></p>
-            <form id="post-form" class="post-form">
+            <form id="post-form">
                 <input id="post-id" type="hidden">
-                <div class="form-grid">
-                    <div>
-                        <label for="post-title">Title</label>
-                        <input id="post-title" required maxlength="180">
+                <div class="editor-workspace">
+                    <div class="editor-controls">
+                        <div class="form-grid">
+                            <div>
+                                <label for="post-title">Title</label>
+                                <input id="post-title" required maxlength="180">
+                            </div>
+                            <div>
+                                <label for="post-category">Category</label>
+                                <select id="post-category">
+                                    <option>School life</option>
+                                    <option>Learning</option>
+                                    <option>Community</option>
+                                    <option>Activities</option>
+                                    <option>Creativity</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label for="post-excerpt">Short summary</label>
+                        <textarea id="post-excerpt" maxlength="500" rows="3" required></textarea>
+                        <label>Article formatting</label>
+                        <div class="format-toolbar" aria-label="Article formatting toolbar">
+                            <button type="button" class="secondary format-button" data-command="bold"><strong>B</strong></button>
+                            <button type="button" class="secondary format-button" data-command="italic"><em>I</em></button>
+                            <button type="button" class="secondary format-button" data-command="underline"><u>U</u></button>
+                            <select id="format-font" aria-label="Font family">
+                                <option value="">Font</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+                            <select id="format-size" aria-label="Font size">
+                                <option value="">Size</option>
+                                <option value="2">Small</option>
+                                <option value="3">Normal</option>
+                                <option value="4">Large</option>
+                                <option value="5">Extra large</option>
+                            </select>
+                            <button type="button" class="secondary format-button" data-command="formatBlock" data-value="h2">Heading</button>
+                            <button type="button" class="secondary format-button" data-command="insertUnorderedList">Bullets</button>
+                            <button type="button" class="secondary format-button" data-command="justifyLeft">Left</button>
+                            <button type="button" class="secondary format-button" data-command="justifyCenter">Center</button>
+                            <button type="button" class="secondary format-button" data-command="createLink">Link</button>
+                            <button type="button" class="secondary format-button" data-command="formatBlock" data-value="blockquote">Quote</button>
+                            <button type="button" class="secondary format-button" data-command="removeFormat">Clear</button>
+                        </div>
+                        <p class="muted format-help">Highlight text in the document on the right and use these tools to format it.</p>
+                        <label for="post-image">Cover image URL <span class="muted">(optional)</span></label>
+                        <input id="post-image" type="url" placeholder="https://...">
+                        <label for="post-gallery">Additional photo URLs <span class="muted">(one URL per line)</span></label>
+                        <textarea id="post-gallery" rows="3" placeholder="https://..."></textarea>
+                        <label for="post-video">YouTube video URL <span class="muted">(optional)</span></label>
+                        <input id="post-video" type="url" placeholder="https://www.youtube.com/watch?v=...">
+                        <label for="post-author">Author/byline</label>
+                        <input id="post-author" maxlength="120" placeholder="Your registered profile name" readonly>
+                        <p class="muted format-help"></p>
+                        <label for="post-scheduled-at">Schedule publication <span class="muted">(optional)</span></label>
+                        <input id="post-scheduled-at" type="datetime-local" lang="en-GB">
+                        <p class="muted format-help"></p>
+                        <div class="form-actions">
+                            <button type="submit" name="status" value="draft" class="action-button action-draft"><span aria-hidden="true">+</span>Save draft</button>
+                            <button type="submit" name="status" value="scheduled" class="action-button action-schedule"><span aria-hidden="true">&#128197;</span>Schedule post</button>
+                            <button type="submit" name="status" value="published" class="action-button action-publish"><span aria-hidden="true">&#9654;</span>Publish post</button>
+                            <button id="preview-post-button" type="button" class="action-button action-preview"><span aria-hidden="true">&#128065;</span>Preview article</button>
+                            <button id="cancel-edit" type="button" class="link-button" hidden>Cancel edit</button>
+                        </div>
                     </div>
-                    <div>
-                        <label for="post-category">Category</label>
-                        <select id="post-category">
-                            <option>School life</option>
-                            <option>Learning</option>
-                            <option>Community</option>
-                            <option>Activities</option>
-                            <option>Creativity</option>
-                        </select>
-                    </div>
-                </div>
-                <label for="post-excerpt">Short summary</label>
-                <textarea id="post-excerpt" maxlength="500" rows="3" required></textarea>
-                <label for="post-content">Article content</label>
-                <textarea id="post-content" rows="12" required></textarea>
-                <label for="post-image">Image URL <span class="muted">(optional for now)</span></label>
-                <input id="post-image" type="url" placeholder="https://...">
-                <div class="form-actions">
-                    <button type="submit" name="status" value="draft" class="secondary">Save draft</button>
-                    <button type="submit" name="status" value="published">Publish post</button>
-                    <button id="cancel-edit" type="button" class="link-button" hidden>Cancel edit</button>
+                    <aside class="editor-preview-panel" aria-label="Live article preview">
+                        <div class="preview-label">Live preview</div>
+                        <article id="post-preview" class="article-preview">
+                            <img src="tlmps_llogo.png" alt="TLMPS logo">
+                            <div class="preview-copy">
+                                <div id="preview-category" class="tag">School life</div>
+                                <h2 id="preview-title">Your article title</h2>
+                                <div id="preview-author" class="meta">TLMPS Editorial Team · 1 min read</div>
+                                <p id="preview-excerpt" class="article-excerpt">Your short summary will appear here.</p>
+                                <div id="preview-content" class="article-body rich-editor" contenteditable="true" role="textbox" aria-label="Article content" data-placeholder="Write your story here..."><p>Your article content will appear here.</p></div>
+                            </div>
+                        </article>
+                    </aside>
                 </div>
             </form>
-            <h2>Existing posts</h2>
-            <div id="posts-list" class="posts-list"></div>
+            <section id="profile-panel" class="profile-panel" hidden aria-labelledby="profile-heading">
+                <div class="profile-heading">
+                    <div>
+                        <p class="eyebrow">Account workspace</p>
+                        <h2 id="profile-heading">My profile</h2>
+                        <p id="profile-email" class="muted"></p>
+                    </div>
+                    <button id="close-profile-button" class="secondary" type="button">Back to editor</button>
+                </div>
+                <div class="profile-summary">
+                    <div class="profile-avatar profile-avatar-large" aria-hidden="true">A</div>
+                    <div>
+                        <strong id="profile-name">TLMPS Admin</strong>
+                        <span id="profile-role" class="muted">Blog administrator</span>
+                    </div>
+                </div>
+                <nav class="profile-tabs" aria-label="Post views">
+                    <button type="button" class="profile-tab active" data-status="all">My posts <span id="count-all">0</span></button>
+                    <button type="button" class="profile-tab" data-status="draft">Drafts <span id="count-draft">0</span></button>
+                    <button type="button" class="profile-tab" data-status="published">Published <span id="count-published">0</span></button>
+                    <button type="button" class="profile-tab" data-status="scheduled">Scheduled <span id="count-scheduled">0</span></button>
+                </nav>
+                <div id="posts-list" class="posts-list"></div>
+            </section>
         </section>
     </main>
     <script src="js/supabase-config.js"></script>

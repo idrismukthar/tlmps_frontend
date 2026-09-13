@@ -7,17 +7,18 @@
     <meta name="keywords" content="TLMPS blog, The Leaders Memorial Private School news, school news Lagos, TLMPS activities">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://tlmps.netlify.app/blog.html">
-    <title>Stories & News | The Leaders Memorial Private School</title>
+    <title>The Leaders Memorial Private School Blog</title>
     
     <!-- Open Graph & Social Metadata -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tlmps.netlify.app/blog.html">
-    <meta property="og:title" content="Stories & News | The Leaders Memorial Private School">
+    <meta property="og:title" content="The Leaders Memorial Private School Blog">
     <meta property="og:description" content="Stories, news, and learning moments from The Leaders Memorial Private School.">
-    <meta property="og:image" content="https://tlmps.netlify.app/img/og-blog.jpg">
+    <meta property="og:image" content="https://tlmps.netlify.app/img/hero.jpg">
+    <meta property="og:image:alt" content="Students at The Leaders Memorial Private School">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@tlmps_edu">
-    <meta name="twitter:title" content="Stories & News | The Leaders Memorial Private School">
+    <meta name="twitter:title" content="The Leaders Memorial Private School Blog">
     <meta name="twitter:description" content="Stories, news, and learning moments from The Leaders Memorial Private School.">
 
     <script type="application/ld+json">
@@ -77,7 +78,7 @@
                     <a href="#latest">View latest <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <article class="featured">
-                    <img src="img/hero1 (1).jpg" alt="TLMPS students learning together">
+                    <img src="tlmps_llogo.png" alt="The Leaders Memorial Private School logo">
                     <div class="featured-copy">
                         <div class="tag">School life · Featured</div>
                         <h3>Growing curious minds, one experience at a time</h3>
@@ -92,7 +93,7 @@
                 </div>
                 <div class="posts">
                     <article class="post">
-                        <img src="img/carousel (10).jpg" alt="Students during morning assembly">
+                        <img src="tlmps_llogo.png" alt="The Leaders Memorial Private School logo">
                         <div class="post-copy">
                             <div class="tag">Community</div>
                             <h3>Why morning assembly matters</h3>
@@ -101,7 +102,7 @@
                         </div>
                     </article>
                     <article class="post">
-                        <img src="img/carousel (19).jpg" alt="Students taking part in a science practical">
+                        <img src="tlmps_llogo.png" alt="The Leaders Memorial Private School logo">
                         <div class="post-copy">
                             <div class="tag">Learning</div>
                             <h3>Learning beyond the textbook</h3>
@@ -110,7 +111,7 @@
                         </div>
                     </article>
                     <article class="post">
-                        <img src="img/carousel (5).jpg" alt="Students at an inter-house sports event">
+                        <img src="tlmps_llogo.png" alt="The Leaders Memorial Private School logo">
                         <div class="post-copy">
                             <div class="tag">Activities</div>
                             <h3>The lessons we learn on the field</h3>
@@ -119,7 +120,7 @@
                         </div>
                     </article>
                     <article class="post">
-                        <img src="img/carousel (14).jpg" alt="Students enjoying a creative arts class">
+                        <img src="tlmps_llogo.png" alt="The Leaders Memorial Private School logo">
                         <div class="post-copy">
                             <div class="tag">Creativity</div>
                             <h3>Making space for imagination</h3>
@@ -157,6 +158,21 @@
     <footer class="footer">
         <p>&copy; <span id="current-year"></span> The Leaders Memorial Private School. All rights reserved.</p>
     </footer>
+
+    <section id="notification-prompt" class="notification-prompt" hidden aria-labelledby="notification-heading">
+        <button id="dismiss-notification-prompt" class="notification-close" type="button" aria-label="Close notification prompt">&times;</button>
+        <div class="notification-icon" aria-hidden="true"><i class="fas fa-bell"></i></div>
+        <div class="notification-copy">
+            <p class="eyebrow">Stay in the loop</p>
+            <h2 id="notification-heading">Want updates from TLMPS?</h2>
+            <p>Get a friendly browser notification when a new school story is published.</p>
+            <div class="notification-actions">
+                <button id="enable-notifications" type="button">Yes, notify me</button>
+                <button id="later-notifications" class="notification-later" type="button">Maybe later</button>
+            </div>
+            <p id="notification-status" class="notification-status" role="status"></p>
+        </div>
+    </section>
 
     <!-- External JavaScript -->
     <script src="js/supabase-config.js"></script>

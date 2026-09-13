@@ -10,6 +10,7 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
+drop policy if exists "Users can read their own profile" on public.profiles;
 create policy "Users can read their own profile"
   on public.profiles
   for select
@@ -23,13 +24,27 @@ create table if not exists public.posts (
   excerpt text not null default '' check (char_length(excerpt) <= 500),
   content text not null default '',
   image_url text,
+  gallery_urls text[] not null default '{}',
+  video_url text,
+  author_name text,
   category text not null default 'School life',
-  status text not null default 'draft' check (status in ('draft', 'published')),
+  status text not null default 'draft' check (status in ('draft', 'scheduled', 'published')),
   author_id uuid references auth.users on delete set null,
+  scheduled_at timestamptz,
   published_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Keep an existing MVP project compatible before policies reference the
+-- scheduling column or the expanded status values.
+alter table public.posts add column if not exists gallery_urls text[] not null default '{}';
+alter table public.posts add column if not exists video_url text;
+alter table public.posts add column if not exists author_name text;
+alter table public.posts add column if not exists scheduled_at timestamptz;
+alter table public.posts drop constraint if exists posts_status_check;
+alter table public.posts add constraint posts_status_check
+  check (status in ('draft', 'scheduled', 'published'));
 
 create index if not exists posts_published_at_idx
   on public.posts (published_at desc)
@@ -37,12 +52,14 @@ create index if not exists posts_published_at_idx
 
 alter table public.posts enable row level security;
 
+drop policy if exists "Anyone can read published posts" on public.posts;
 create policy "Anyone can read published posts"
   on public.posts
   for select
   to anon, authenticated
-  using (status = 'published');
+  using (status = 'published' and published_at is not null and published_at <= now());
 
+drop policy if exists "Admins can read all posts" on public.posts;
 create policy "Admins can read all posts"
   on public.posts
   for select
@@ -56,6 +73,7 @@ create policy "Admins can read all posts"
     )
   );
 
+drop policy if exists "Admins can create posts" on public.posts;
 create policy "Admins can create posts"
   on public.posts
   for insert
@@ -70,6 +88,7 @@ create policy "Admins can create posts"
     and author_id = (select auth.uid())
   );
 
+drop policy if exists "Admins can update posts" on public.posts;
 create policy "Admins can update posts"
   on public.posts
   for update
@@ -91,6 +110,7 @@ create policy "Admins can update posts"
     )
   );
 
+drop policy if exists "Admins can delete posts" on public.posts;
 create policy "Admins can delete posts"
   on public.posts
   for delete
@@ -111,9 +131,15 @@ set search_path = public
 as $$
 begin
   new.updated_at = now();
-  if new.status = 'published' and new.published_at is null then
-    new.published_at = now();
+  if new.status = 'published' then
+    if new.published_at is null then
+      new.published_at = now();
+    end if;
+    new.scheduled_at = null;
+  elsif new.status = 'scheduled' then
+    new.published_at = null;
   elsif new.status = 'draft' then
+    new.scheduled_at = null;
     new.published_at = null;
   end if;
   return new;
@@ -128,3 +154,37 @@ for each row execute function public.set_posts_updated_at();
 grant select on public.posts to anon, authenticated;
 grant select on public.profiles to authenticated;
 grant insert, update, delete on public.posts to authenticated;
+
+create index if not exists posts_scheduled_at_idx
+  on public.posts (scheduled_at)
+  where status = 'scheduled';
+
+-- Enable the extension once in Dashboard > Database > Extensions if it is not
+-- already enabled, then run this scheduling job. It promotes due posts without
+-- requiring an admin page or browser to remain open.
+create extension if not exists pg_cron;
+
+create or replace function public.publish_due_posts()
+returns void
+language sql
+security invoker
+set search_path = public
+as $$
+  update public.posts
+  set status = 'published',
+      published_at = now(),
+      updated_at = now()
+  where status = 'scheduled'
+    and scheduled_at is not null
+    and scheduled_at <= now();
+$$;
+
+select cron.unschedule(jobid)
+from cron.job
+where jobname = 'tlmps-publish-due-posts';
+
+select cron.schedule(
+  'tlmps-publish-due-posts',
+  '* * * * *',
+  $$select public.publish_due_posts();$$
+);

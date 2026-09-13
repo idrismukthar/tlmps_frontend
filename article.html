@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read the latest news and stories from The Leaders Memorial Private School.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://tlmps.netlify.app/article.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tlmps.netlify.app/article.html">
+    <meta property="og:title" content="School Story | The Leaders Memorial Private School">
+    <meta property="og:description" content="Read the latest news and stories from The Leaders Memorial Private School.">
+    <meta property="og:image" content="https://tlmps.netlify.app/tlmps_llogo.png">
+    <meta property="og:image:alt" content="The Leaders Memorial Private School logo">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://tlmps.netlify.app/tlmps_llogo.png">
+    <meta name="twitter:image:alt" content="The Leaders Memorial Private School logo">
+    <title>School Story | The Leaders Memorial Private School</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="article.css">
+</head>
+<body>
+    <div class="journal-bar">
+        <div class="journal-bar-inner">
+            <div class="article-breadcrumbs" aria-label="Breadcrumb">
+                <a href="index.html">Home</a><span>/</span><a href="blog.html">News</a><span>/</span><span>Article</span>
+            </div>
+            <a class="journal-cta" href="blog.html">Subscribe: TLMPS Journal</a>
+        </div>
+    </div>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="logo" href="index.html">
+                <img src="tlmps_llogo.png" alt="TLMPS logo">
+                <span>The Leaders Memorial Private School</span>
+            </a>
+            <button class="menu-button" aria-label="Open navigation menu" aria-expanded="false" onclick="toggleMenu()"><span aria-hidden="true">&#9776;</span></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a class="active" href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a class="enroll" href="admission.html">Enroll Now</a></li>
+                <li><a class="enroll" href="https://tlmps-portal.onrender.com/">Check Results</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-page">
+        <div class="page-width">
+            <article id="article-content" class="article-card" aria-live="polite">
+                <p class="article-status">Loading story...</p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span id="current-year"></span> The Leaders Memorial Private School. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="js/supabase-config.js"></script>
+    <script type="module" src="article.js"></script>
+</body>
+</html>
