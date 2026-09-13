@@ -122,7 +122,7 @@ $$;
 
 drop trigger if exists posts_updated_at on public.posts;
 create trigger posts_updated_at
-before update on public.posts
+before insert or update on public.posts
 for each row execute function public.set_posts_updated_at();
 
 grant select on public.posts to anon, authenticated;
